@@ -1,0 +1,22 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Edit Auteur{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_USER') %}
+    <h1>Edit Auteur</h1>
+
+    {{ include('auteur/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('auteur_index') }}">Retour à la liste</a>
+{% if is_granted('ROLE_ADMIN') %}
+    {{ include('auteur/_delete_form.html.twig') }}
+     {% else %}
+      {% endif %}
+    
+    {% else %}
+    <h1>Acces refusé vous n'êtes pas admin</h1>
+       <p><a href="{{path('app_login')}}">Se connecter</a></p>
+       
+    {% endif %}
+{% endblock %}

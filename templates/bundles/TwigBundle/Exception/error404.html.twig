@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Error 404 {% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" style="height: 1000px; background-color: #FFBD59">
+    <div class="row"> 
+        <div class="d-flex justify-content-center">
+           
+            
+            <div class=""> 
+                <h1>Code de l'erreur : {{status_code}}</h1>
+                <p>Page non trouvée</p>
+                <p>Message de l'erreur : {{status_text}}</p>
+                <p>Erreur d'URL</p>
+                <div class=""><button class="bg-info">
+                    <a href="/">Accueil</a>
+                </div>
+                </button>
+                
+            </div>
+            <div class=""><img src="/img/logowekicook.png" class="bg-warning"> </div>
+           
+        </div>
+    </div>
+</div> 
+{% endblock %}

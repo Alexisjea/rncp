@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Categories{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+    <h1>Créer</h1>
+
+    {{ include('categories/_form.html.twig') }}
+
+    <a href="{{ path('categories_index') }}">Retour à la liste</a>
+     {% else %}
+    <h1>Acces refusé vous n'est pas admin</h1>
+    <p><a href="{{path('app_login')}}">Se connecter</a></p>
+     {% endif %}
+{% endblock %}

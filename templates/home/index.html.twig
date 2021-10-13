@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Bienvenue sur WekiCook !{% endblock %}
+
+{% block content %}
+   
+    {# <div class="d-flex justify-content-end mb-4 mt-2">
+        <div> {{ form(form) }}</div> 
+            <div class="d-flex justify-content-between ml-4"> 
+                <button class ="btn btn-primary" id="searching" type="submit"><i class="fas fa-search">  {{ button_label|default()}}</i> </button>
+            </div> 
+        </div> #}
+        {{ form_start(form) }}
+<div class="d-flex justify-content-end mb-4 mt-2">
+       {{ form_widget (form) }}
+            <div class="d-flex justify-content-between ml-4"> 
+                <button class ="btn btn-primary" id="searching" type="submit"><i class="fas fa-search">  {{ button_label|default()}}</i> </button>
+            </div> 
+        </div>
+{{ form_end(form) }} 
+    <div class="container">
+    
+        <div class="container row">  
+            <div class="leboeuf">
+                <section class="container aboutus">
+                    <div class="d-flex justify-content-center">
+                        <h1>Qui sommes nous ?</h1>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card card-aboutus" style="width: 35rem;">
+                            <div class="card-body bodycard row"style="padding: 50px;">
+                                <h5 class="card-title d-flex justify-content-center mb-5">A propos de wekicook</h5>
+                                <h6 class="card-subtitle mb-6 text-muted">ÉVADEZ-VOUS & PRÉPAREZ UN LONG VOYAGE AUTOUR DE LA TABLE</h6>
+                                <p class="card-text">WekiCook, découvrez sur mon blog de recettes du monde où toutes les informations utiles à la préparation de vos recettes en provenance de vos papilles ! Idées de recettes aux quatre coins du Monde et astuces pour penser à tout avant de commencer à cuisiner </p>
+                                
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                </section>
+                <section class="lastposts">
+                    <div class="d-flex justify-content-center" id="lastpostdiv">
+                        <h1>Dernières recettes publiées</h1>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="row"> 
+                            {% for article in article | slice(0,9) %}
+                            <div class="col-md-4 mb-5 mr-4">
+                                <div class="card posts">
+                                    <div class="lastposts-img"> 
+                                        <img src="{{ asset('img/'~article.preview) }}" class="card-img-top" alt="...">
+                                    </div> 
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{article.title}}</h5>
+                                        <p class="card-text">{{article.content| slice(0,100)|raw}}</p>
+                                        <a href="{{ path('a_show' , {id : article.id}) }}" class="btn btn-secondary">Lire plus</a>
+                                    </div> <!-- fin card-body-->
+                                </div> <!-- fin card posts-->
+                            </div> <!-- fin col4-->
+                            {% endfor %}
+                        </div> <!-- fin row--> 
+                    </div><!-- fin row justify-content-between-->
+                </section>    
+        </div>
+    </div>
+ 
+</div><!-- Fermeture du container de layout -->
+
+{% endblock %}

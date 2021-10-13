@@ -1,0 +1,15 @@
+{% extends 'admin.html.twig' %}
+
+
+{% block body %}
+
+<h2> Promouvoir {{ utilisateur.email }} en EDITOR ? </h2>
+
+
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+   
+{{ form_end(form) }}
+
+{% endblock %}

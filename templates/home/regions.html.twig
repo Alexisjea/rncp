@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container row">
+      <h1>Catégories</h1>
+       {% for categories in categories  %}
+         
+        <div class=""> 
+            <h3 class="">Continent : {{categories.continent}} ({{categories.country}})  </h3>
+                <div class="row">
+                   {% for article in categories.article %}   
+                <div class="col-md-4">
+                    <div class=" card">  
+                        <img src="{{ asset('img/'~article.preview) }}" class="card-img-top" alt="...">
+                                
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">{{article.content| slice(0,100)|raw}}</p>
+                            <a href="{{ path('a_show' , {id : article.id}) }}" class="btn btn-primary">Voir</a>
+                        </div>
+                    </div> 
+                </div>
+            {% endfor %}
+        </div> 
+    </div> 
+         {% endfor %}
+   
+ 
+{% endblock %}

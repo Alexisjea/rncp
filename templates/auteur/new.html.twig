@@ -1,0 +1,22 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Nouveau Auteur{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_USER') %}
+            <h1>Créer un auteur</h1>
+
+    {{ include('auteur/_form.html.twig') }}
+            <div class="mb-8">
+                <a href="{{ path('auteur_index') }}">Retour à la liste</a>
+            </div>
+
+    {% else %}
+
+        <h1>Acces refusé vous n'est pas admin</h1>
+        <p><a href="{{path('app_login')}}">Se connecter</a></p>
+
+    {% endif %}
+
+{% endblock %}

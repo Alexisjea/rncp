@@ -1,0 +1,45 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                {# <th>Password</th>
+                <th>Token</th> #}
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.roles ? utilisateur.roles|json_encode : '' }}</td>
+                {# <td>{{ utilisateur.password }}</td>
+                <td>{{ utilisateur.token }}</td> #}
+                <td>{{ utilisateur.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('utilisateur_show', {'id': utilisateur.id}) }}">show</a>
+                    <a href="{{ path('utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+                    <button class="btn bg-info" href="{{path('app_promote', {'id': utilisateur.id}) }}"><a href="{{ path('app_promote', {'id': utilisateur.id}) }}">Promote Admin</a></button>
+  <button class="btn bg-info" href="{{path('app_promoteEditor', {'id': utilisateur.id}) }}"><a href="{{ path('app_promoteEditor', {'id': utilisateur.id}) }}">Promote editor</a></button>    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('utilisateur_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "admin.html.twig" %}
+ {% block body %} 
+ {% if is_granted('ROLE_ADMIN') %}
+    <h1>Bienvenue sur l'interface admin de WekiCook</h1>
+    {% else %}
+    <h1>Bienvenue sur l'interface admin de WekiCook</h1>
+    <p><a href="{{ path('app_login') }}">Se Connecter</a></p>
+    {% endif %}
+    {% endblock %}

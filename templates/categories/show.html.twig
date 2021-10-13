@@ -1,0 +1,35 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+    <h1>Categories</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Continent</th>
+                <td>{{ category.continent }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ category.country }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('categories_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('categories_edit', {'id': category.id}) }}">Editer</a>
+
+    {{ include('categories/_delete_form.html.twig') }}
+     {% else %}
+    <h1>Acces refusé vous n'est pas admin</h1>
+    <p><a href="{{path('app_login')}}">Se connecter</a></p>
+     {% endif %}
+{% endblock %}

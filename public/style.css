@@ -1,0 +1,7 @@
+.articleTitle{
+    text-decoration: none;
+    text-transform: none;
+}
+.articleTitle:hover{
+color: blueviolet;
+}

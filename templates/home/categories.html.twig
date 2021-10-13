@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container">
+  <div class="d-flex justify-content-end"> <h1>Catégories</h1> </div>
+    
+    <h2>Pays</h2>
+    <div class="card" style="width: 18rem;">     
+    {% for categories in categories %}
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{categories.country}}</li>
+        
+        
+    </ul>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+

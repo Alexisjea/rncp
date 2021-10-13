@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}		
+	<div class="show-article">
+		<h2>{{ article.title }}</h2>
+		<div>
+			<img src="{{ asset('img/'~article.preview) }}"class="card-img-top">
+		</div>
+		<h3 class="auteur-substitle"></h3>
+		<p class="article">{{ article.content | raw }}</p>
+	</div>
+{% endblock %}

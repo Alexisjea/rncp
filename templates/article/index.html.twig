@@ -1,0 +1,45 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_USER') %}
+    <h1>Liste des articles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Aperçu</th>
+                <th>Actions</th>
+            </tr>
+            <button class="btn btn-lg btn-primary"> <a href="{{ path('article_new') }}">Créer</a></button>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content | raw }}</td>
+                <td><img width="70" src="{{ asset('img/'~article.preview) }}" alt=""></td>
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun resultats</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+      
+    {% else %}
+    <h1>Acces refusé vous n'est pas admin</h1>
+    <p><a href="{{path('app_login')}}">Se connecter</a></p>
+     {% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Categories {% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+    <h1>Liste des Categories </h1>
+    <button class="btn btn-lg btn-primary"> <a href="{{ path('categories_new') }}">Créer</a></button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Continent</th>
+                <th>Country</th>
+                <th>Région</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.continent }}</td>
+                <td>{{ category.country }}</td>
+                <td>{{ category.region }}</td>
+                <td>
+                    <a href="{{ path('categories_show', {'id': category.id}) }}">Voir</a>
+                    <a href="{{ path('categories_edit', {'id': category.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun Resultats</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+     {% else %}
+    <h1>Acces refusé vous n'est pas admin</h1>
+    <p><a href="{{path('app_login')}}">Se connecter</a></p>
+     {% endif %}
+{% endblock %}

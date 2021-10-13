@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+ {{ form_start(form) }}
+<div class="d-flex justify-content-end mb-4 mt-2">
+       {{ form_widget (form) }}
+            <div class="d-flex justify-content-between ml-4"> 
+                <button class ="btn btn-primary" id="searching" type="submit"><i class="fas fa-search">  {{ button_label|default()}}</i> </button>
+            </div> 
+        </div>
+{{ form_end(form) }} 
+<section class="lastposts">
+    <div class="d-flex justify-content-center" id="lastpostdiv">
+        <h1>Tous nos auteurs</h1>
+    </div>
+    <div class="row justify-content-between">
+        <div class="row"> 
+            {% for author in author %}
+                <div class="col-md-4 col-sm-6 mb-5 mr-4">
+                    <div class="card posts">
+                        <div class="lastposts-img"> 
+                            <img src="{{ asset('img/user.png') }}" class="card-img-top" alt="...">
+                        </div> 
+                        <div class="card-body">
+                            
+                            <p class="card-text">{{author.name}}</p>
+                             <p class="card-text">{{author.firstname}}</p>
+                          
+                        </div>
+                    </div><!-- fin card-->
+                </div><!-- fin col4-->
+            {% endfor %}
+        </div><!-- fin row--> 
+    </div><!-- row justify-content-between-->
+</section>  
+
+{% endblock %}
